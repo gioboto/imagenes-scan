@@ -25,7 +25,7 @@ def obtiene_atributos_imagen(ruta):
 def guarda_json(datos, nombre_archivo):
     try:
         with open(nombre_archivo,'w') as archivo:
-            json.dump(datos, archivo, ident=2)
+            json.dump(datos, archivo, indent=2)
         print(f"Satos cuardafod en {nombre_archivo}")
     except Exception as e:
         print(f"Error en guardar jcon: {e}")
