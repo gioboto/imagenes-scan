@@ -8,6 +8,7 @@
     "error": "cannot identify image file '/home/usuario/Downloads/tyt.txt'"
   },
   {
+    "ruta": "/home/usuario/Downloads/images.jpeg",
     "nombre": "images.jpeg",
     "ancho": 159,
     "alto": 119,

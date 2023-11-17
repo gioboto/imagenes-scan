@@ -17,7 +17,7 @@ def obtiene_atributos_imagen(ruta):
             palette = img.palette
             
             #print({'nombre': os.path.basename(ruta), 'ancho': ancho, 'alto': alto, 'modo': modo, 'im' : im, 'format' : format, 'formatd': formatd, 'info': info, 'palette' : palette})
-            return({'nombre': os.path.basename(ruta), 'ancho': ancho, 'alto': alto, 'modo': modo, 'im' : im, 'format' : format, 'formatd': formatd, 'info': info, 'palette' : palette})
+            return({'ruta': ruta, 'nombre': os.path.basename(ruta), 'ancho': ancho, 'alto': alto, 'modo': modo, 'im' : im, 'format' : format, 'formatd': formatd, 'info': info, 'palette' : palette})
     except Exception as ex:
         return {'nombre': os.path.basename(ruta), 'error': str(ex)}
     
