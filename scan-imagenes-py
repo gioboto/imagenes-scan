@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+import os
+#import threading
+import lee
+from concurrent.futures import ThreadPoolExecutor
+
+def leer_carpeta(carpeta):
+    print(f"Leyendo archivos en la carpeta: {carpeta}")
+    for ruta_actual, carpetas, archivos in os.walk(carpeta):
+        for archivo in archivos[:5]:
+            ruta_completa = os.path.join(ruta_actual, archivo)
+            with open(ruta_completa, 'r') as f:
+                contenido = lee.obtiene_atributos_imagen(ruta_completa)
+                #contenido = f.read()
+                #print(f"Contenido de {archivo}: {contenido"""[:50]"""}...")
+                print(f"Contenido de {archivo}: {contenido}")
+
+#Lista de carpetas  aleer 
+
+carpetas = ['/home/usuario/Downloads/']
+
+num_hilos = 3
+
+#LIsta para almacenar hilos
+hilos = []
+
+# Utiliza ThreadPoolExecutor para hilos de manera eficiente
+
+with ThreadPoolExecutor(max_workers=num_hilos) as executor:
+    #inicia un hilo or cada carpeta
+    futuros = {executor.submit(leer_carpeta, carpeta): carpeta for carpeta in carpetas}
+    
+    # esperar que todos los hilos terminen
+    for futuro in futuros:
+        try:
+            futuro.result()
+        except Exception as e:
+            print(f"Error en hilo : {e}")
+    
+print("todo hilo terminado")
