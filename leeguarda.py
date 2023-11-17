@@ -2,6 +2,7 @@
 
 import os
 from PIL import Image
+import json
 
 #ruta = "/home/usuario/Downloads/images.jpeg"
 def obtiene_atributos_imagen(ruta):
@@ -19,3 +20,13 @@ def obtiene_atributos_imagen(ruta):
             return({'nombre': os.path.basename(ruta), 'ancho': ancho, 'alto': alto, 'modo': modo, 'im' : im, 'format' : format, 'formatd': formatd, 'info': info, 'palette' : palette})
     except Exception as ex:
         return {'nombre': os.path.basename(ruta), 'error': str(ex)}
+    
+
+def guarda_json(datos, nombre_archivo):
+    try:
+        with open(nombre_archivo,'w') as archivo:
+            json.dump(datos, archivo, ident=2)
+        print(f"Satos cuardafod en {nombre_archivo}")
+    except Exception as e:
+        print(f"Error en guardar jcon: {e}")
+            

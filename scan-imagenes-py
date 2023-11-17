@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 import os
-#import threading
-import lee
-from concurrent.futures import ThreadPoolExecutor
+import concurrent.futures
+import leeguarda
+#from concurrent.futures import ThreadPoolExecutor
 
 def leer_carpeta(carpeta):
     print(f"Leyendo archivos en la carpeta: {carpeta}")
+    valores_imagen = []
     for ruta_actual, carpetas, archivos in os.walk(carpeta):
         for archivo in archivos[:5]:
             ruta_completa = os.path.join(ruta_actual, archivo)
             with open(ruta_completa, 'r') as f:
-                contenido = lee.obtiene_atributos_imagen(ruta_completa)
+                contenido = leeguarda.obtiene_atributos_imagen(ruta_completa)
+                valores_imagen.append(contenido)
                 #contenido = f.read()
                 #print(f"Contenido de {archivo}: {contenido"""[:50]"""}...")
                 print(f"Contenido de {archivo}: {contenido}")
-
+    return valores_imagen
 #Lista de carpetas  aleer 
 
 carpetas = ['/home/usuario/Downloads/']
@@ -26,15 +28,21 @@ hilos = []
 
 # Utiliza ThreadPoolExecutor para hilos de manera eficiente
 
-with ThreadPoolExecutor(max_workers=num_hilos) as executor:
+with concurrent.futures.ThreadPoolExecutor(max_workers=num_hilos) as executor:
     #inicia un hilo or cada carpeta
     futuros = {executor.submit(leer_carpeta, carpeta): carpeta for carpeta in carpetas}
     
     # esperar que todos los hilos terminen
-    for futuro in futuros:
+    for futuro in concurrent.futures.as_completed(futuros):
+        carpeta = futuros[futuro]
         try:
-            futuro.result()
+            valores_imagen = futuro.result()
+            print(f"valores imagen en la carpeta {carpeta}:")
+            for valores_image in valores_imagen:
+                print(valores_image)
+            nombre_archivo_json = 'atributos_totales.json'
+            leeguarda.guarda_json(valores_imagen, nombre_archivo_json)
         except Exception as e:
-            print(f"Error en hilo : {e}")
+            print(f"Error en carpeta {carpeta} : {e}")
     
 print("todo hilo terminado")
