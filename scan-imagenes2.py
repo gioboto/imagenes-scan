@@ -46,7 +46,7 @@ def procesar_carpeta_principal(carpeta_principal, nombre_archivo_json):
     leeguarda.guarda_json(resultados, nombre_archivo_json)
 
 if __name__ == "__main__":
-    # Carpeta principal que quieres procesar
+    # Carpeta principal que quieres procesar .
     carpeta_principal = "/home/usuario/Downloads/"
 
     # Nombre del archivo JSON de salida
