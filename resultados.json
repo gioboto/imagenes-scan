@@ -1,5 +1,21 @@
 [
   {
+    "nombre": "d1.txt",
+    "error": "cannot identify image file '/home/usuario/Downloads/d1/d1.txt'"
+  },
+  {
+    "nombre": "d2.txt",
+    "error": "cannot identify image file '/home/usuario/Downloads/d1/d2.txt'"
+  },
+  {
+    "nombre": "d1.txt",
+    "error": "cannot identify image file '/home/usuario/Downloads/d1/d1.txt'"
+  },
+  {
+    "nombre": "d2.txt",
+    "error": "cannot identify image file '/home/usuario/Downloads/d1/d2.txt'"
+  },
+  {
     "nombre": "code_1.84.2-1699528352_amd64.deb",
     "error": "cannot identify image file '/home/usuario/Downloads/code_1.84.2-1699528352_amd64.deb'"
   },
@@ -15,31 +31,10 @@
     "modo": "RGB",
     "im": null,
     "format": "JPEG",
-    "formatd": "JPEG (ISO 10918)",
-    "info": {
-      "jfif": 257,
-      "jfif_version": [
-        1,
-        1
-      ],
-      "jfif_unit": 0,
-      "jfif_density": [
-        1,
-        1
-      ]
-    },
-    "palette": null
+    "formatd": "JPEG (ISO 10918)"
   },
   {
     "nombre": "VisualStudioSetup.exe",
     "error": "cannot identify image file '/home/usuario/Downloads/VisualStudioSetup.exe'"
-  },
-  {
-    "nombre": "d1.txt",
-    "error": "cannot identify image file '/home/usuario/Downloads/d1/d1.txt'"
-  },
-  {
-    "nombre": "d2.txt",
-    "error": "cannot identify image file '/home/usuario/Downloads/d1/d2.txt'"
   }
 ]
