@@ -23,7 +23,7 @@ def procesar_carpeta(carpeta, resultados):
             atributos = leeguarda.obtiene_atributos_imagen(ruta_archivo)
             if atributos:
                 resultados.append(atributos)
-                print(ruta_archivo)
+               # print(ruta_archivo)
         elif os.path.isdir(ruta_archivo):
             procesar_carpeta(ruta_archivo, resultados)
 """
@@ -34,11 +34,13 @@ def guardar_en_json(resultados, nombre_archivo):
 def procesar_carpeta_principal(carpeta_principal, nombre_archivo_json):
     resultados = []
     hilos = []
-
+    cont = 0
     for carpeta, _, _ in os.walk(carpeta_principal):
         hilo = threading.Thread(target=procesar_carpeta, args=(carpeta, resultados))
         hilos.append(hilo)
         hilo.start()
+        cont += 1
+        print(cont)
 
     for hilo in hilos:
         hilo.join()
