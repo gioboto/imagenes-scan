@@ -6,6 +6,12 @@ import leeguarda
 
 
 def procesar_carpeta(carpeta, resultados):
+    """lee las carpetas dentro del directorio y llama la funciòn para leer los atributos de los archvios de imagen
+
+    Args:
+        carpeta (string): lee la carpeta
+        resultados (dictionary): diccionario de atributos
+    """    
     for nombre_archivo in os.listdir(carpeta):
         ruta_archivo = os.path.join(carpeta, nombre_archivo)
         if os.path.isfile(ruta_archivo): #and nombre_archivo.lower().endswith(('.jpg', '.jpeg', '.png')):
@@ -17,6 +23,12 @@ def procesar_carpeta(carpeta, resultados):
             procesar_carpeta(ruta_archivo, resultados)
 
 def procesar_carpeta_principal(carpeta_principal, nombre_archivo_json):
+    """Llama a función procesar_carpeta, y por meido de hilos guarda los resultados con la función leeguarda.guarda_json
+
+    Args:
+        carpeta_principal (string): _description_
+        nombre_archivo_json (string): _description_
+    """    
     resultados = []
     hilos = []
     cont = 0
@@ -33,7 +45,7 @@ def procesar_carpeta_principal(carpeta_principal, nombre_archivo_json):
     leeguarda.guarda_json(resultados, nombre_archivo_json)
 
 if __name__ == "__main__":
-    # Carpeta principal que quieres procesar .
+    # Carpeta principal que se  quiere procesar .
     carpeta_principal = "/home/usuario/Downloads/"
     #carpeta_principal = "/home/usuariopy/imagenes-zapatos/rfzs-2023-11-09/"
     # Nombre del archivo JSON de salida
