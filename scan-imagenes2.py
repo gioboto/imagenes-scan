@@ -1,7 +1,7 @@
 import os
 import threading
-from PIL import Image
-import json
+#from PIL import Image
+#import json
 import leeguarda
 """
 def obtener_atributos_imagen(ruta_imagen):
@@ -48,7 +48,7 @@ def procesar_carpeta_principal(carpeta_principal, nombre_archivo_json):
 if __name__ == "__main__":
     # Carpeta principal que quieres procesar .
     carpeta_principal = "/home/usuario/Downloads/"
-
+    #carpeta_principal = "/home/usuariopy/imagenes-zapatos/rfzs-2023-11-09/"
     # Nombre del archivo JSON de salida
     nombre_archivo_json = "resultados.json"
 
